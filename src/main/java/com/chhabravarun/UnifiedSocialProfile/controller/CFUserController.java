@@ -2,6 +2,7 @@ package com.chhabravarun.UnifiedSocialProfile.controller;
 
 
 import com.chhabravarun.UnifiedSocialProfile.model.Quote;
+import com.chhabravarun.UnifiedSocialProfile.service.UserDaoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +17,12 @@ import org.springframework.web.client.RestTemplate;
 public class CFUserController {
 
     @Autowired
-    RestTemplate restTemplate;
+    UserDaoService userDaoService;
 
     @GetMapping("/{id}")
     public Quote getUserById(@PathVariable("id") String id){
 
-
-        Quote quote = restTemplate.getForObject("https://codeforces.com/api/user.info?handles="+id, Quote.class);
-
-        return quote;
+        return userDaoService.getUserById(id);
 
     }
 
