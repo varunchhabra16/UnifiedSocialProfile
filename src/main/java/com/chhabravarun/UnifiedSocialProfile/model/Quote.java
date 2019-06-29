@@ -1,37 +1,55 @@
 package com.chhabravarun.UnifiedSocialProfile.model;
 
-import com.chhabravarun.UnifiedSocialProfile.model.CFUser;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "status",
+        "result"
+})
+
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Quote {
 
+    @JsonProperty("status")
     private String status;
-    private CFUser result;
+    @JsonProperty("result")
+    private List<Result> result = null;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Quote(){}
-
-    public String getStatus(){
+    @JsonProperty("status")
+    public String getStatus() {
         return status;
     }
 
+    @JsonProperty("status")
     public void setStatus(String status) {
         this.status = status;
     }
 
-    public CFUser getResult() {
+    @JsonProperty("result")
+    public List<Result> getResult() {
         return result;
     }
 
-    public void setResult(CFUser result) {
+    @JsonProperty("result")
+    public void setResult(List<Result> result) {
         this.result = result;
     }
 
-    @Override
-    public String toString() {
-        return "Quote{" +
-                "status='" + status + '\'' +
-                ", result=" + result +
-                '}';
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 }
