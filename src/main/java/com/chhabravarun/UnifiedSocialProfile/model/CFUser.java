@@ -6,15 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "status",
         "result"
 })
-
-//@JsonIgnoreProperties(ignoreUnknown = true)
-public class Quote {
+public class CFUser {
 
     @JsonProperty("status")
     private String status;
@@ -52,4 +49,5 @@ public class Quote {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
 }

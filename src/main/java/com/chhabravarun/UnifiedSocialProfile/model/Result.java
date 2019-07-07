@@ -24,7 +24,6 @@ import java.util.Map;
         "registrationTimeSeconds",
         "maxRank"
 })
-
 public class Result {
 
     @JsonProperty("lastName")
@@ -231,4 +230,5 @@ public class Result {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
 }
