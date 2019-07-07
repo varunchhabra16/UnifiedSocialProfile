@@ -50,4 +50,5 @@ public class CFUser {
         this.additionalProperties.put(name, value);
     }
 
+
 }
